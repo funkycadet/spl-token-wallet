@@ -1,13 +1,13 @@
 import { useAsyncData } from '../fetch-loop';
-import * as anchor from '@project-serum/anchor';
+import * as anchor from '@coral-xyz/anchor';
 import { PublicKey, SystemProgram } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from '@project-serum/token';
+import * as idl from './openbook_v2.json';
 
 const provider = anchor.AnchorProvider.local();
 anchor.setProvider(provider);
 
-const idl = require('./openbook_v2_idl.json'); // Load your OpenBook V2 IDL
-const programID = new PublicKey('opnb2LAfJYbRMAHHvqjCwQxanZn7ReEHp1k81EohpZb'); // Replace with the actual program ID
+const programID = new PublicKey('opnb2LAfJYbRMAHHvqjCwQxanZn7ReEHp1k81EohpZb');
 const program = new anchor.Program(idl, programID, provider);
 
 export class SwapApiError extends Error {
